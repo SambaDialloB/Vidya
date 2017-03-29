@@ -103,14 +103,14 @@
             //we have to select from the game_console and console as well to display both game and console information
 
             echo '<h1>LIST OF ALL GAMES BY ';
-            $sql = 'SELECT Game.*, game_console.*, Console.*
-                    FROM Game
+            $sql = 'SELECT g.*, gc.*, c.*
+                    FROM Game as g
                     INNER JOIN game_console gc
-                        ON Game.gameId = gc.gameId
+                        ON g.gameId = gc.gameId
                     INNER JOIN Console c
                         ON c.consoleId = gc.consoleId';
             if(isset($_POST["mat"])){
-                $sql .= ' ORDER BY Game.maturity ASC';
+                $sql .= ' ORDER BY g.maturity ASC';
                 echo 'MATURITY RATING </h1>';
             }
             else if(isset($_POST["con"]))
@@ -121,7 +121,7 @@
             }
             else
             {
-                $sql .= ' ORDER BY Game.rating DESC';
+                $sql .= ' ORDER BY g.rating DESC';
                 echo 'GAME RATING </h1>';
             }
             $stmt = $dbConn->prepare($sql);
