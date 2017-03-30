@@ -10,7 +10,7 @@
         
     </head>
     
-    <body>
+    <body align = "center" class = "changeColor bodyChange">
         RUBRIC
         <br>
         1) Database has at least 3 tables with 40 records (10 points) <br>
@@ -26,12 +26,12 @@
         up (5 points) UPLOAD these documents here and ALSO link them from your C9 site  (5 points) <br>
         <h1> Welcome to the Vidya Game story!</h1>
         
-        How would you like to see the games?
+        <h2>How would you like to see the games?</h2>
         <form method="post" action="addToCart.php" name="choice">
             <input type="submit" name="mat" value="Maturity!"/>
             <input type="submit" name="con" value="Console!"/>
             <input type="submit" name="rat" value="Rating!"/>
-            <a href="addToCart.php"><button type="button" class="btn btn-primary btn-sm activated"><font color= "#ff0000" class = "hoverTxt">Checkout</font></button></a>
+            <a href="addToCart.php"><button type="button" class="btn btn-primary btn-sm activated"><font color= "black" class = "hoverTxt">Checkout</font></button></a>
         </form>
         <hr>
         
@@ -45,7 +45,7 @@
         function dispByPrice()
         {
             echo '<h1>Games displayed by Price Ascending</h1>
-            <table>
+            <table align = "center">
             <tr>
                 <td colspan="5" >Click a Game to see its description!</td>
             </tr>';
@@ -54,9 +54,9 @@
             //server stuff
             $servername = getenv('IP');
             $dbPort = 3306; 
-            $database = "Vidya";
+            $database = "Vidya2";
             $username = getenv('C9_USER');
-            $password = "Pooza99";
+            $password = "";
             $dbConn = new PDO("mysql:host=$servername;port=$dbPort;dbname=$database", $username, $password);
             $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
             

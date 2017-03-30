@@ -10,8 +10,10 @@
         
     </head>
     
-    <body>
+    <body class = "changeColor bodyChange">
+<h1 align ="center"> <font color = "white" style = "font-family: Lobster"> Whatya Buying?</font></h1>
 <?php
+static $total = 0;
 // Start the session
 session_start();
 /*
@@ -22,37 +24,87 @@ array_push($_SESSION['cart'],$_POST['option']);
 */ if(!isset($_SESSION['option']))
        {
          $_SESSION["option"] = array();
+         
+       }
+    if(!isset($_POST['submit']))
+       {
+         $_SESSION["option"] = array();
        }
 
 
 
  if(isset($_POST['submit']))
         {
-         foreach($_SESSION["option"] as $val)
-         {
-        echo '<div > This is the shopping cart contents '.$val.'</div>';
+            if ($_SERVER["REQUEST_METHOD"] == "POST")
+            {
+    
+                if(!empty($_POST['option']))
+                    {
+                        foreach($_POST['option'] as $selected)
+                        {
+                            array_push($_SESSION['option'], $selected);
+                        }
+                    }
+  
+            }
+              
+        //server stuff
+        $servername = getenv('IP');
+        $dbPort = 3306; 
+        $database = "Vidya2";
+        $username = getenv('C9_USER');
+        $password = "";
+        $dbConn = new PDO("mysql:host=$servername;port=$dbPort;dbname=$database", $username, $password);
+        $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
+        
+            foreach($_SESSION["option"] as $val)
+            {
+                //echo '<div > Purchased: '.$val.'</div>';
+                
+                $sql ="SELECT Game.*
+                    FROM Game
+                    WHERE Game.gameId = ($val)
+                    ";
+            //$counter = 0;
+            $stmt = $dbConn->prepare($sql);
+            $stmt->execute ();
+            echo'<table style="width:100%" class = "change">';
+         echo'<tr>
+                <td> Game Id</td>
+                <td> Game Name</td>
+                <td> Price</td>
+                <td> Total </td>
+                
+                
+              </tr>';
+                while($row = $stmt -> fetch())
+                {   
+           
+                   // echo'<div align = "center"> Game Id: '.$row['gameId'].' Game Name: '.$row['gameName'].' Price: '.$row['price'].'</div>';
+                    $total  = $total + $row['price'];
+                    //echo'<div align = "center">'. 'Total: '.$total.'</div>';
+                    
+                      echo'<tr>';
+                      echo'<td>'.$row['gameId'].'</td>';
+                      echo'<td>'.$row['gameName'].'</td>';
+                      echo'<td>'.$row['price'].'</td>';
+                      echo'<td>'.$total.'</td>';
+                      echo' </tr>';
+                    
+            
+                }
+                
+                echo'</table>';
+                
         
           
-         }
+            }
          
          
         }
-  if(!isset($_POST['submit']))
-       {
-         $_SESSION["option"] = array();
-       }
-       
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
-  if(!empty($_POST['option']))
-  {
-    foreach($_POST['option'] as $selected)
-    {
-        array_push($_SESSION['option'], $selected);
-    }
-  }
   
-}
+       
+
 if(isset($_POST['clear']))
        {
         session_unset($_SESSION['option']);
@@ -62,17 +114,13 @@ if(isset($_POST['clear']))
        }
   
 ?>
-<html>
-  <head>
+
       
-  </head>  
-  <body>
-      <h1 align = "center">Select the game that you wish to purchase</h1>
     <div align = "center">
       <form action="addToCart.php" method="POST">
             
             
-                <div >Select your option: </div>
+                <h2>Select your option: </h2>
                 <select multiple name="option[]">
                   <?php
                   
@@ -81,12 +129,12 @@ $servername = getenv('IP');
 $dbPort = 3306;
 
 // Which database (the name of the database in phpMyAdmin)
-$database = "Vidya";
+$database = "Vidya2";
 
 // My user information...I could have prompted for password, as well, or stored in the
 // environment, or, or, or (all in the name of better security)
 $username = getenv('C9_USER');
-$password = "Pooza99";
+$password = "";
 
 // Establish the connection and then alter how we are tracking errors (look those keywords up)
 $dbConn = new PDO("mysql:host=$servername;port=$dbPort;dbname=$database", $username, $password);
@@ -101,7 +149,7 @@ $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
           while($row = $stmt -> fetch())
         {   
            
-           echo'<option value='.$row['gameId'].'>'.$row['gameName'].'</option>';
+           echo'<option value='.$row['gameId'].'>'.'<font color = "white">'.$row['gameName'].'</font></option>';
          
             
         }
@@ -127,13 +175,15 @@ $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         dispByConsole();
     else
     {
-        echo 'I really dont know how you got to this page! But Im going to display by Price!!';
+        //echo 'I really dont know how you got to this page! But Im going to display by Price!!';
         dispByPrice();
     }
+     
     function dispByConsole()
-    {
-        echo '<h1>Games displayed by Console</h1>
-        <table>
+    {   
+       
+        echo '<h1 align = "center" >Games displayed by Console</h1>
+        <table align = "center">
         <tr>
             <td colspan="5" >Click a Game to see its description!</td>
         </tr>';
@@ -142,9 +192,9 @@ $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         //server stuff
         $servername = getenv('IP');
         $dbPort = 3306; 
-        $database = "Vidya";
+        $database = "Vidya2";
         $username = getenv('C9_USER');
-        $password = "Pooza99";
+        $password = "";
         $dbConn = new PDO("mysql:host=$servername;port=$dbPort;dbname=$database", $username, $password);
         $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
         
@@ -178,8 +228,8 @@ $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     function dispByRating()
     {
         //NEEDS PRICE IN POP UP
-        echo '<h1>Games displayed by Metacritic Score</h1>
-        <table>
+        echo '<h1 align = "center">Games displayed by Metacritic Score</h1>
+        <table align = "center">
         <tr>
             <td colspan="5" >Click a Game to see its description!</td>
         </tr>';
@@ -188,9 +238,9 @@ $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         //server stuff
         $servername = getenv('IP');
         $dbPort = 3306; 
-        $database = "Vidya";
+        $database = "Vidya2";
         $username = getenv('C9_USER');
-        $password = "Pooza99";
+        $password = "";
         $dbConn = new PDO("mysql:host=$servername;port=$dbPort;dbname=$database", $username, $password);
         $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
         
@@ -225,8 +275,8 @@ $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     function dispByMat()
     {
         //NEEDS PRICE IN POP UP
-        echo '<h1>Games displayed by Maturity</h1>
-        <table>
+        echo '<h1 align = "center">Games displayed by Maturity</h1>
+        <table align = "center">
         <tr>
             <td colspan="5" >Click a Game to see its description!</td>
         </tr>';
@@ -235,9 +285,9 @@ $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         //server stuff
         $servername = getenv('IP');
         $dbPort = 3306; 
-        $database = "Vidya";
+        $database = "Vidya2";
         $username = getenv('C9_USER');
-        $password = "Pooza99";
+        $password = "";
         $dbConn = new PDO("mysql:host=$servername;port=$dbPort;dbname=$database", $username, $password);
         $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
         
@@ -271,8 +321,8 @@ $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
     function dispByPrice()
     {
-        echo '<h1>Games displayed by Price Ascending</h1>
-        <table>
+        echo '<h1 align = "center">Games displayed by Price Ascending</h1>
+        <table align = "center">
         <tr>
             <td colspan="5" >Click a Game to see its description!</td>
         </tr>';
@@ -281,9 +331,9 @@ $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         //server stuff
         $servername = getenv('IP');
         $dbPort = 3306; 
-        $database = "Vidya";
+        $database = "Vidya2";
         $username = getenv('C9_USER');
-        $password = "Pooza99";
+        $password = "";
         $dbConn = new PDO("mysql:host=$servername;port=$dbPort;dbname=$database", $username, $password);
         $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
         
@@ -323,7 +373,7 @@ $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
     <div>
          
-    <a href = "storeFront.php">Go Back To Main Page</a><!--- This Would have to be going back to the main page -->
+    <h1><a href = "storeFront.php">Go Back To Main Page</a></h1><!--- This Would have to be going back to the main page -->
     </div>
     
     <script>
@@ -333,6 +383,8 @@ $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             popup.classList.toggle("show");
         }
     </script>
+    
+    
   </body>
 </html>
 

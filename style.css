@@ -255,3 +255,33 @@ td.text-right {
     from {opacity: 0;}
     to {opacity:1 ;}
 }
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: black !important;
+}
+.hoverTxt{
+    color:white;
+}
+
+.change{
+    border: 1px solid black !important;
+    border-collapse: collapse;
+}
+html{
+    background-image: url(https://images6.alphacoders.com/582/582733.jpg) !important;
+   
+    
+}
+.bodyChange{
+    opacity: 0.85;
+}
+.changeColor
+{    
+    background-color: #560000;
+    color: black;
+    
+}
+h1, h2 {
+    color: white !important;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-family: Lobster !important;
+}
