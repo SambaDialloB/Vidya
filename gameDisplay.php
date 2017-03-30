@@ -93,9 +93,9 @@
             //server stuff
             $servername = getenv('IP');
             $dbPort = 3306; 
-            $database = "Vidya2";
+            $database = "Vidya";
             $username = getenv('C9_USER');
-            $password = "";
+            $password = "Pooza99";
             $dbConn = new PDO("mysql:host=$servername;port=$dbPort;dbname=$database", $username, $password);
             $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
             

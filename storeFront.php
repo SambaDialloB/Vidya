@@ -27,12 +27,74 @@
         <h1> Welcome to the Vidya Game story!</h1>
         
         How would you like to see the games?
-        <form method="post" action="gameDisplay.php" name="choice">
+        <form method="post" action="addToCart.php" name="choice">
             <input type="submit" name="mat" value="Maturity!"/>
             <input type="submit" name="con" value="Console!"/>
             <input type="submit" name="rat" value="Rating!"/>
             <a href="addToCart.php"><button type="button" class="btn btn-primary btn-sm activated"><font color= "#ff0000" class = "hoverTxt">Checkout</font></button></a>
         </form>
+        <hr>
         
+        
+        
+        <?php
+        dispByPrice();
+        
+        
+        
+        function dispByPrice()
+        {
+            echo '<h1>Games displayed by Price Ascending</h1>
+            <table>
+            <tr>
+                <td colspan="5" >Click a Game to see its description!</td>
+            </tr>';
+            
+            
+            //server stuff
+            $servername = getenv('IP');
+            $dbPort = 3306; 
+            $database = "Vidya";
+            $username = getenv('C9_USER');
+            $password = "Pooza99";
+            $dbConn = new PDO("mysql:host=$servername;port=$dbPort;dbname=$database", $username, $password);
+            $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
+            
+            //select statement
+            //we have to select from the game_console and console as well to display both game and console information
+
+            $sql = 'SELECT g.*, gc.*, c.*
+                    FROM Game as g
+                    INNER JOIN game_console gc
+                        ON g.gameId = gc.gameId
+                    INNER JOIN Console c
+                        ON c.consoleId = gc.consoleId
+                    ORDER BY g.price ASC';
+            $stmt = $dbConn->prepare($sql);
+            $stmt->execute ();
+            $i = 0;
+            while ($row = $stmt->fetch())  { 
+                $i++;
+                echo '
+                    <tr>
+                        <td><div class="popup" onclick="myFunction(' . $i . ')">' .  $row['gameId'] . '. ' . $row['gameName'] . ', $ ' . $row['price']  . '
+                            <span class="popuptext" id="' . $i . '"> Genre: ' . $row['genre'] . ', Released ' . $row['releaseDate'] . ' on the ' . $row['consoleName']  . '. Rating: ' . $row['maturity'] . ' Metacritic: ' . $row['rating'] . '/100
+                            
+                            </span>
+                        </div> </td>
+                    </tr>';
+            }
+            echo '</table>';
+            
+            
+        }
+        ?>
+        <script>
+            // When the user clicks on div, open the popup
+            function myFunction($i) {
+                var popup = document.getElementById($i);
+                popup.classList.toggle("show");
+            }
+        </script>
     </body>
 </html>
