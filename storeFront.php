@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Linking my CSS -->
+         <link rel = "stylesheet" type =" text/css" href = "style.css"/>
+         <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
+         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
         <title>Vidya Games</title>
+        
     </head>
     
     <body>
@@ -19,11 +25,14 @@
         10) In a Word document include User Story, Database schema, and mock
         up (5 points) UPLOAD these documents here and ALSO link them from your C9 site  (5 points) <br>
         <h1> Welcome to the Vidya Game story!</h1>
+        
         How would you like to see the games?
         <form method="post" action="gameDisplay.php" name="choice">
             <input type="submit" name="mat" value="Maturity!"/>
             <input type="submit" name="con" value="Console!"/>
             <input type="submit" name="rat" value="Rating!"/>
+            <a href="addToCart.php"><button type="button" class="btn btn-primary btn-sm activated"><font color= "#ff0000" class = "hoverTxt">Checkout</font></button></a>
         </form>
+        
     </body>
 </html>

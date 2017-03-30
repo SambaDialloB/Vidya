@@ -25,7 +25,7 @@ $servername = getenv('IP');
 $dbPort = 3306;
 
 // Which database (the name of the database in phpMyAdmin)
-$database = "Vidya";
+$database = "Vidya2";
 
 // My user information...I could have prompted for password, as well, or stored in the
 // environment, or, or, or (all in the name of better security)
@@ -49,8 +49,7 @@ $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         <table class = 'table-fill'>
         <thead>
             <tr>
-                <th>Product Name</th>
-                <th>Product Price</th>
+                
      
             </tr>
         </thead>
@@ -79,5 +78,5 @@ $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         
 ?>
 </body>
-<a href = "products.php">Go Back To Main Page</a>
+<a href = "storeFront.php">Go Back To Main Page</a>
 </html>
