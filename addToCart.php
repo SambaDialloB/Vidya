@@ -166,7 +166,7 @@ $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             echo '
                 <tr>
                     <td><div class="popup" onclick="myFunction(' . $i . ')">' .  $row['gameId'] . '. ' . $row['gameName'] . ', Released on the ' . $row['consoleName'] . '
-                        <span class="popuptext" id="' . $i . '"> Genre: ' . $row['genre'] . ', Released ' . $row['releaseDate'] . ' on the ' . $row['consoleName']  . '. Rating: ' . $row['maturity'] .', Metacritic: ' . $row['rating'] . '/100, Price: $' . $row['price'] . '
+                        <span class="popuptext" id="' . $i . '"> Genre: ' . $row['genre'] . ', Released ' . $row['releaseDate'] .  '. Rating: ' . $row['maturity'] .', Metacritic: ' . $row['rating'] . '/100, Price: $' . $row['price'] . '
                         </span>
                     </div> </td>
                 </tr>';
@@ -211,8 +211,8 @@ $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $i++;
             echo '
                 <tr>
-                    <td><div class="popup" onclick="myFunction(' . $i . ')">' .  $row['gameId'] . '. ' . $row['gameName'] . ', Metacritic: ' . $row['rating'] . '/100
-                        <span class="popuptext" id="' . $i . '"> Genre: ' . $row['genre'] . ', Released ' . $row['releaseDate'] . ' on the ' . $row['consoleName']  . '. Rating: ' . $row['maturity'] .', Price: $' . $row['price'] . '
+                    <td><div class="popup" onclick="myFunction(' . $i . ')">' .  $row['gameId'] . '. ' . $row['gameName'] . ', Released on the ' . $row['consoleName'] . ', Metacritic: ' . $row['rating'] . '/100
+                        <span class="popuptext" id="' . $i . '"> Genre: ' . $row['genre'] . ', Released ' . $row['releaseDate'] . '. Rating: ' . $row['maturity'] .', Price: $' . $row['price'] . '
                         
                         </span>
                     </div> </td>
@@ -258,8 +258,8 @@ $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $i++;
             echo '
                 <tr>
-                    <td><div class="popup" onclick="myFunction(' . $i . ')">' .  $row['gameId'] . '. ' . $row['gameName'] . ', Rated: ' . $row['maturity']  . '
-                        <span class="popuptext" id="' . $i . '"> Genre: ' . $row['genre'] . ', Released ' . $row['releaseDate'] . ' on the ' . $row['consoleName']  . '. Metacritic: ' . $row['rating'] . '/100, Price: $' . $row['price'] . '
+                    <td><div class="popup" onclick="myFunction(' . $i . ')">' .  $row['gameId'] . '. ' . $row['gameName'] . ', Rated: ' . $row['maturity']  . ', Released on the ' . $row['consoleName'] . '
+                        <span class="popuptext" id="' . $i . '"> Genre: ' . $row['genre'] . ', Released ' . $row['releaseDate'] . '. Metacritic: ' . $row['rating'] . '/100, Price: $' . $row['price'] . '
                         
                         </span>
                     </div> </td>
@@ -304,8 +304,8 @@ $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $i++;
             echo '
                 <tr>
-                    <td><div class="popup" onclick="myFunction(' . $i . ')">' .  $row['gameId'] . '. ' . $row['gameName'] . ', $ ' . $row['price']  . '
-                        <span class="popuptext" id="' . $i . '"> Genre: ' . $row['genre'] . ', Released ' . $row['releaseDate'] . ' on the ' . $row['consoleName']  . '. Rating: ' . $row['maturity'] . ' Metacritic: ' . $row['rating'] . '/100
+                    <td><div class="popup" onclick="myFunction(' . $i . ')">' .  $row['gameId'] . '. ' . $row['gameName'] . ', Released on the ' . $row['consoleName'] . ', $ ' . $row['price']  . '
+                        <span class="popuptext" id="' . $i . '"> Genre: ' . $row['genre'] . ', Released ' . $row['releaseDate'] . '. Rating: ' . $row['maturity'] . ' Metacritic: ' . $row['rating'] . '/100
                         
                         </span>
                     </div> </td>
