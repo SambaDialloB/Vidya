@@ -52,17 +52,18 @@
             
             
             //server stuff
+             //server stuff
             $servername = getenv('IP');
             $dbPort = 3306; 
-            $database = "Vidya2";
+            $database = "Vidya";
             $username = getenv('C9_USER');
-            $password = "";
+            $password = "Pooza99";
             $dbConn = new PDO("mysql:host=$servername;port=$dbPort;dbname=$database", $username, $password);
             $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
             
             //select statement
             //we have to select from the game_console and console as well to display both game and console information
-
+        
             $sql = 'SELECT g.*, gc.*, c.*
                     FROM Game as g
                     INNER JOIN game_console gc
@@ -77,15 +78,15 @@
                 $i++;
                 echo '
                     <tr>
-                        <td><div class="popup" onclick="myFunction(' . $i . ')">' .  $row['gameId'] . '. ' . $row['gameName'] . ', $ ' . $row['price']  . '
-                            <span class="popuptext" id="' . $i . '"> Genre: ' . $row['genre'] . ', Released ' . $row['releaseDate'] . ' on the ' . $row['consoleName']  . '. Rating: ' . $row['maturity'] . ' Metacritic: ' . $row['rating'] . '/100
+                        <td><div class="popup" onclick="myFunction(' . $i . ')">' .  $row['gameId'] . '. ' . $row['gameName'] . ', Released on the ' . $row['consoleName'] . ', $ ' . $row['price']  . '
+                            <span class="popuptext" id="' . $i . '"> Genre: ' . $row['genre'] . ', Released ' . $row['releaseDate'] . '. Rating: ' . $row['maturity'] . ' Metacritic: ' . $row['rating'] . '/100
                             
                             </span>
                         </div> </td>
                     </tr>';
             }
             echo '</table>';
-            
+                
             
         }
         ?>

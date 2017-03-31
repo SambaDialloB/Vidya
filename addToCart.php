@@ -51,9 +51,9 @@ array_push($_SESSION['cart'],$_POST['option']);
         //server stuff
         $servername = getenv('IP');
         $dbPort = 3306; 
-        $database = "Vidya2";
+        $database = "Vidya";
         $username = getenv('C9_USER');
-        $password = "";
+        $password = "Pooza99";
         $dbConn = new PDO("mysql:host=$servername;port=$dbPort;dbname=$database", $username, $password);
         $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
         
@@ -129,12 +129,12 @@ $servername = getenv('IP');
 $dbPort = 3306;
 
 // Which database (the name of the database in phpMyAdmin)
-$database = "Vidya2";
+$database = "Vidya";
 
 // My user information...I could have prompted for password, as well, or stored in the
 // environment, or, or, or (all in the name of better security)
 $username = getenv('C9_USER');
-$password = "";
+$password = "Pooza99";
 
 // Establish the connection and then alter how we are tracking errors (look those keywords up)
 $dbConn = new PDO("mysql:host=$servername;port=$dbPort;dbname=$database", $username, $password);
@@ -188,13 +188,25 @@ $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             <td colspan="5" >Click a Game to see its description!</td>
         </tr>';
         
+        echo '<img src="https://www.cyberpowerpc.com/images/cs/enthoominixl/01_220.png" style="float:left" height="200" width="200">';
+        echo '<img src="http://target.scene7.com/is/image/Target/52052007_Alt05?wid=520&hei=520&fmt=pjpeg" style="float:right" height="200" width="200">';
+        
+        echo '<img src="http://1.bp.blogspot.com/-5GXVLdiLU_0/VlSRToyikEI/AAAAAAAARi8/4CjHSqdQRHg/s640/Sony%2BPS3.PNG" style="float:left;clear:both" height="200" width="200">';
+        echo '<img src="http://compass.xbox.com/assets/74/ba/74ba692a-e4f1-4195-af2a-e3c1a2f3dd3b.jpg?n=promo-xbox-360-cle-facebook-share-preview.jpg" style="float:right" height="200" width="200">';
+        
+        echo '<img src="https://media.playstation.com/is/image/SCEA/playstation-4-slim-vertical-product-shot-01-us-07sep16?$TwoColumn_Image$" style="float:left;clear:both" height="200" width="200">';
+        echo '<img src="http://www.gamestop.com/common/images/lbox/127395b.jpg" style="float:right" height="200" width="200">';
+        
+        echo '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Nintendo-DS-Fat-Blue.png/250px-Nintendo-DS-Fat-Blue.png" style="float:left;clear:both" height="200" width="200">';
+        echo '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Wii-Console.png/260px-Wii-Console.png" style="float:right" height="200" width="200">';
+        
         
         //server stuff
         $servername = getenv('IP');
         $dbPort = 3306; 
-        $database = "Vidya2";
+        $database = "Vidya";
         $username = getenv('C9_USER');
-        $password = "";
+        $password = "Pooza99";
         $dbConn = new PDO("mysql:host=$servername;port=$dbPort;dbname=$database", $username, $password);
         $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
         
@@ -227,20 +239,31 @@ $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
     function dispByRating()
     {
-        //NEEDS PRICE IN POP UP
-        echo '<h1 align = "center">Games displayed by Metacritic Score</h1>
+      echo '<h1 align = "center" >Games displayed by Console</h1>
         <table align = "center">
         <tr>
             <td colspan="5" >Click a Game to see its description!</td>
         </tr>';
         
+        echo '<img src="https://www.cyberpowerpc.com/images/cs/enthoominixl/01_220.png" style="float:left" height="200" width="200">';
+        echo '<img src="http://target.scene7.com/is/image/Target/52052007_Alt05?wid=520&hei=520&fmt=pjpeg" style="float:right" height="200" width="200">';
+        
+        echo '<img src="http://1.bp.blogspot.com/-5GXVLdiLU_0/VlSRToyikEI/AAAAAAAARi8/4CjHSqdQRHg/s640/Sony%2BPS3.PNG" style="float:left;clear:both" height="200" width="200">';
+        echo '<img src="http://compass.xbox.com/assets/74/ba/74ba692a-e4f1-4195-af2a-e3c1a2f3dd3b.jpg?n=promo-xbox-360-cle-facebook-share-preview.jpg" style="float:right" height="200" width="200">';
+        
+        echo '<img src="https://media.playstation.com/is/image/SCEA/playstation-4-slim-vertical-product-shot-01-us-07sep16?$TwoColumn_Image$" style="float:left;clear:both" height="200" width="200">';
+        echo '<img src="http://www.gamestop.com/common/images/lbox/127395b.jpg" style="float:right" height="200" width="200">';
+        
+        echo '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Nintendo-DS-Fat-Blue.png/250px-Nintendo-DS-Fat-Blue.png" style="float:left;clear:both" height="200" width="200">';
+        echo '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Wii-Console.png/260px-Wii-Console.png" style="float:right" height="200" width="200">';
+        
         
         //server stuff
         $servername = getenv('IP');
         $dbPort = 3306; 
-        $database = "Vidya2";
+        $database = "Vidya";
         $username = getenv('C9_USER');
-        $password = "";
+        $password = "Pooza99";
         $dbConn = new PDO("mysql:host=$servername;port=$dbPort;dbname=$database", $username, $password);
         $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
         
@@ -274,20 +297,30 @@ $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
     function dispByMat()
     {
-        //NEEDS PRICE IN POP UP
-        echo '<h1 align = "center">Games displayed by Maturity</h1>
+        echo '<h1 align = "center" >Games displayed by Console</h1>
         <table align = "center">
         <tr>
             <td colspan="5" >Click a Game to see its description!</td>
         </tr>';
         
+        echo '<img src="https://www.cyberpowerpc.com/images/cs/enthoominixl/01_220.png" style="float:left" height="200" width="200">';
+        echo '<img src="http://target.scene7.com/is/image/Target/52052007_Alt05?wid=520&hei=520&fmt=pjpeg" style="float:right" height="200" width="200">';
+        
+        echo '<img src="http://1.bp.blogspot.com/-5GXVLdiLU_0/VlSRToyikEI/AAAAAAAARi8/4CjHSqdQRHg/s640/Sony%2BPS3.PNG" style="float:left;clear:both" height="200" width="200">';
+        echo '<img src="http://compass.xbox.com/assets/74/ba/74ba692a-e4f1-4195-af2a-e3c1a2f3dd3b.jpg?n=promo-xbox-360-cle-facebook-share-preview.jpg" style="float:right" height="200" width="200">';
+        
+        echo '<img src="https://media.playstation.com/is/image/SCEA/playstation-4-slim-vertical-product-shot-01-us-07sep16?$TwoColumn_Image$" style="float:left;clear:both" height="200" width="200">';
+        echo '<img src="http://www.gamestop.com/common/images/lbox/127395b.jpg" style="float:right" height="200" width="200">';
+        
+        echo '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Nintendo-DS-Fat-Blue.png/250px-Nintendo-DS-Fat-Blue.png" style="float:left;clear:both" height="200" width="200">';
+        echo '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Wii-Console.png/260px-Wii-Console.png" style="float:right" height="200" width="200">';
         
         //server stuff
         $servername = getenv('IP');
         $dbPort = 3306; 
-        $database = "Vidya2";
+        $database = "Vidya";
         $username = getenv('C9_USER');
-        $password = "";
+        $password = "Pooza99";
         $dbConn = new PDO("mysql:host=$servername;port=$dbPort;dbname=$database", $username, $password);
         $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
         
@@ -321,19 +354,31 @@ $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
     function dispByPrice()
     {
-        echo '<h1 align = "center">Games displayed by Price Ascending</h1>
+       echo '<h1 align = "center" >Games displayed by Console</h1>
         <table align = "center">
         <tr>
             <td colspan="5" >Click a Game to see its description!</td>
         </tr>';
         
+        echo '<img src="https://www.cyberpowerpc.com/images/cs/enthoominixl/01_220.png" style="float:left" height="200" width="200">';
+        echo '<img src="http://target.scene7.com/is/image/Target/52052007_Alt05?wid=520&hei=520&fmt=pjpeg" style="float:right" height="200" width="200">';
+        
+        echo '<img src="http://1.bp.blogspot.com/-5GXVLdiLU_0/VlSRToyikEI/AAAAAAAARi8/4CjHSqdQRHg/s640/Sony%2BPS3.PNG" style="float:left;clear:both" height="200" width="200">';
+        echo '<img src="http://compass.xbox.com/assets/74/ba/74ba692a-e4f1-4195-af2a-e3c1a2f3dd3b.jpg?n=promo-xbox-360-cle-facebook-share-preview.jpg" style="float:right" height="200" width="200">';
+        
+        echo '<img src="https://media.playstation.com/is/image/SCEA/playstation-4-slim-vertical-product-shot-01-us-07sep16?$TwoColumn_Image$" style="float:left;clear:both" height="200" width="200">';
+        echo '<img src="http://www.gamestop.com/common/images/lbox/127395b.jpg" style="float:right" height="200" width="200">';
+        
+        echo '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Nintendo-DS-Fat-Blue.png/250px-Nintendo-DS-Fat-Blue.png" style="float:left;clear:both" height="200" width="200">';
+        echo '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Wii-Console.png/260px-Wii-Console.png" style="float:right" height="200" width="200">';
+        
         
         //server stuff
         $servername = getenv('IP');
         $dbPort = 3306; 
-        $database = "Vidya2";
+        $database = "Vidya";
         $username = getenv('C9_USER');
-        $password = "";
+        $password = "Pooza99";
         $dbConn = new PDO("mysql:host=$servername;port=$dbPort;dbname=$database", $username, $password);
         $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
         
